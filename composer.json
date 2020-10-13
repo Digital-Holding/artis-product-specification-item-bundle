@@ -1,0 +1,50 @@
+{
+    "name": "digital-holding/artis-product-specification-item-bundle",
+    "description": "Library which adds support for specification items in Artis product variants.",
+    "type": "artis-bundle",
+    "keywords": [
+      "artis",
+      "sylius",
+      "artis-plugin",
+      "dh",
+      "digital-holding"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Digital Holding",
+            "email": "info@digitalholding.pl",
+            "homepage": "https://digitalholding.pl",
+            "role": "owner"
+        },
+        {
+            "name": "Bartosz Pachołek",
+            "email": "bartosz.pacholek@digitalholding.pl",
+            "role": "lead"
+        }
+    ],
+    "require": {
+      "php": ">=7.1",
+      "ext-ctype": "*",
+      "ext-mbstring": "*",
+      "sylius/sylius": "^1.6",
+      "myclabs/php-enum": "^1.7"
+    },
+    "require-dev": {
+      "friendsofphp/php-cs-fixer": "^2.16",
+      "phpunit/phpunit": "^7.5",
+      "mikey179/vfsstream": "^1.6.8",
+      "php-mock/php-mock-phpunit": "^2.5",
+      "php-coveralls/php-coveralls": "^2.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "DH\\Artis\\Product\\Specification\\": "src/"
+      }
+    },
+    "scripts": {
+      "test": [
+        "./vendor/phpunit/phpunit/phpunit"
+      ]
+    }
+  }
