@@ -6,6 +6,6 @@ namespace DH\Artis\Product\Specification;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class DHArtisSimpleProductVariantOverwriteHotfixPlugin extends Bundle
+final class ArtisProductSpecificationItemBundle extends Bundle
 {
 }
