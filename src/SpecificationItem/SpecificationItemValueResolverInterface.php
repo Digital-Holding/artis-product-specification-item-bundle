@@ -10,6 +10,6 @@ namespace DH\Artis\Product\Specification\SpecificationItem;
  */
 interface SpecificationItemValueResolverInterface
 {
-    public function getSpecificationItemValueByType(string $type, $value, bool $getItemIdForSelect = false);
-    public function getSpecificationItemValueFieldByType(string $type, $value);
+    public function getSpecificationItemValueByType(SpecificationItemValueType $type, $value, bool $getItemIdForSelect = false);
+    public function getSpecificationItemValueFieldByType(SpecificationItemValueType $type, $value);
 }

@@ -20,17 +20,17 @@ class SpecificationItemValueResolver implements SpecificationItemValueResolverIn
         $this->productVariantSpecificationItemValueRepository = $productVariantSpecificationItemValueRepository;
     }
 
-    public function getSpecificationItemValueFieldByType(string $type, $value)
+    public function getSpecificationItemValueFieldByType(SpecificationItemValueType $type, $value)
     {
-        if (SpecificationItemValueType::INT() === $type) {
+        if ($type->equals(SpecificationItemValueType::INT())) {
             return 'intValue';
-        } elseif (SpecificationItemValueType::BOOLEAN() === $type) {
+        } elseif ($type->equals(SpecificationItemValueType::BOOLEAN())) {
             return 'booleanValue';
-        } elseif (SpecificationItemValueType::STRING() === $type) {
+        } elseif ($type->equals(SpecificationItemValueType::STRING())) {
             return 'value';
         } elseif (
-            SpecificationItemValueType::SELECT() === $type ||
-            SpecificationItemValueType::SELECT_WITH_IMAGE() === $type) {
+            $type->equals(SpecificationItemValueType::SELECT()) ||
+            $type->equals(SpecificationItemValueType::SELECT_WITH_IMAGE())) {
 
             return 'specificationItemValue';
         }
@@ -38,17 +38,17 @@ class SpecificationItemValueResolver implements SpecificationItemValueResolverIn
         return null;
     }
 
-    public function getSpecificationItemValueByType(string $type, $value, bool $getItemIdForSelect = false)
+    public function getSpecificationItemValueByType(SpecificationItemValueType $type, $value, bool $getItemIdForSelect = false)
     {
-        if (SpecificationItemValueType::INT() === $type) {
+        if ($type->equals(SpecificationItemValueType::INT())) {
             return $value->getIntValue();
-        } elseif (SpecificationItemValueType::BOOLEAN() === $type) {
+        } elseif ($type->equals(SpecificationItemValueType::BOOLEAN())) {
             return $value->isBooleanValue();
-        } elseif (SpecificationItemValueType::STRING() === $type) {
+        } elseif ($type->equals(SpecificationItemValueType::STRING())) {
             return $value->getValue();
         } elseif (
-            SpecificationItemValueType::SELECT() === $type ||
-            SpecificationItemValueType::SELECT_WITH_IMAGE() === $type) {
+            $type->equals(SpecificationItemValueType::SELECT()) ||
+            $type->equals(SpecificationItemValueType::SELECT_WITH_IMAGE())) {
             /** @var ProductVariantSpecificationItemValueInterface $itemValue */
             $itemValue = $this->productVariantSpecificationItemValueRepository->findOneBy(['code' => $value->getValue()]);
 
