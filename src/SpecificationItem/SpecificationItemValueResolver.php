@@ -20,17 +20,17 @@ class SpecificationItemValueResolver implements SpecificationItemValueResolverIn
         $this->productVariantSpecificationItemValueRepository = $productVariantSpecificationItemValueRepository;
     }
 
-    public function getSpecificationItemValueFieldByType(string $type, ProductVariantSpecificationItemValuesInterface $value)
+    public function getSpecificationItemValueFieldByType(string $type, $value)
     {
-        if (ProductVariantSpecificationItemInterface::TYPE_INT === $type) {
+        if (SpecificationItemValueType::INT() === $type) {
             return 'intValue';
-        } elseif (ProductVariantSpecificationItemInterface::TYPE_BOOLEAN === $type) {
+        } elseif (SpecificationItemValueType::BOOLEAN() === $type) {
             return 'booleanValue';
-        } elseif (ProductVariantSpecificationItemInterface::TYPE_STRING === $type) {
+        } elseif (SpecificationItemValueType::STRING() === $type) {
             return 'value';
         } elseif (
-            ProductVariantSpecificationItemInterface::TYPE_SELECT === $type ||
-            ProductVariantSpecificationItemInterface::TYPE_SELECT_WITH_IMAGE === $type) {
+            SpecificationItemValueType::SELECT() === $type ||
+            SpecificationItemValueType::SELECT_WITH_IMAGE() === $type) {
 
             return 'specificationItemValue';
         }
