@@ -1,5 +1,3 @@
 services:
     dh.artis.product.specification_item.specification_item_value_resolver:
         class: DH\Artis\Product\Specification\SpecificationItem\SpecificationItemValueResolver
-        arguments:
-            - "@dh.repository.product_variant_specification_item_value"

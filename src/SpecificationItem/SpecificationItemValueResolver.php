@@ -12,14 +12,6 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
  */
 class SpecificationItemValueResolver implements SpecificationItemValueResolverInterface
 {
-    /** @var ProductVariantSpecificationItemValueRepositoryInterface */
-    private $productVariantSpecificationItemValueRepository;
-
-    public function __construct(RepositoryInterface $productVariantSpecificationItemValueRepository)
-    {
-        $this->productVariantSpecificationItemValueRepository = $productVariantSpecificationItemValueRepository;
-    }
-
     public function getSpecificationItemValueFieldByType(SpecificationItemValueType $type, $value)
     {
         if ($type->equals(SpecificationItemValueType::INT())) {
@@ -49,14 +41,15 @@ class SpecificationItemValueResolver implements SpecificationItemValueResolverIn
         } elseif (
             $type->equals(SpecificationItemValueType::SELECT()) ||
             $type->equals(SpecificationItemValueType::SELECT_WITH_IMAGE())) {
-            /** @var ProductVariantSpecificationItemValueInterface $itemValue */
-            $itemValue = $this->productVariantSpecificationItemValueRepository->findOneBy(['code' => $value->getValue()]);
+
+           // /** @var ProductVariantSpecificationItemValueInterface $itemValue */
+           // $itemValue = $this->productVariantSpecificationItemValueRepository->findOneBy(['code' => $value->getValue()]);
 
             if ($getItemIdForSelect) {
-                return $itemValue->getId();
+                return $value->getSpecificationItemValue()->getId();
             }
 
-            return $itemValue->getValue();
+            return $value->getSpecificationItemValue()->getValue();
         }
 
         return null;
